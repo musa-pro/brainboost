@@ -1,92 +1,140 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Challenge</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-            transition: background-color 1s;
-        }
-        
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Math Ninja</title> <style> body { font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 20px; transition: background-color 1s; }
         #game-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        
-        #header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        
-        #score-display, #time-display {
-            font-size: 24px;
-            font-weight: bold;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #f0f0f0;
-        }
-        
-        #question-container {
-            font-size: 28px;
-            margin: 30px 0;
-        }
-        
-        #answer-input {
-            font-size: 24px;
-            padding: 10px;
-            width: 100px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        #submit-btn {
-            font-size: 20px;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        #submit-btn:hover {
-            background-color: #45a049;
-        }
-        
-        #result-message {
-            font-size: 24px;
-            margin: 20px 0;
-            min-height: 30px;
-        }
-        
-        #progress {
-            margin-top: 20px;
-            font-size: 18px;
-        }
-        
-        #game-over {
-            font-size: 28px;
-            color: #d9534f;
-            margin: 30px 0;
-            display: none;
-        }
-    </style>
-</head>
-<body>
-    <div id="game-container">
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    
+    #header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    
+    #score-display, #time-display {
+        font-size: 24px;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #f0f0f0;
+    }
+    
+    #question-container {
+        font-size: 28px;
+        margin: 30px 0;
+    }
+    
+    #answer-input, #name-input {
+        font-size: 24px;
+        padding: 10px;
+        width: 200px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .btn {
+        font-size: 20px;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 10px;
+    }
+    
+    .btn:hover {
+        background-color: #45a049;
+    }
+    
+    #result-message {
+        font-size: 24px;
+        margin: 20px 0;
+        min-height: 30px;
+    }
+    
+    #progress {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+    
+    #game-over, #welcome-screen {
+        font-size: 28px;
+        margin: 30px 0;
+    }
+    
+    #game-over {
+        color: #d9534f;
+        display: none;
+    }
+    
+    #leaderboard {
+        margin-top: 30px;
+        text-align: left;
+        padding: 0 20px;
+    }
+    
+    #leaderboard h2 {
+        text-align: center;
+    }
+    
+    #leaderboard-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    #leaderboard-table th, #leaderboard-table td {
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    #leaderboard-table th {
+        background-color: #f2f2f2;
+    }
+    
+    #ninja-logo {
+        font-size: 50px;
+        margin-bottom: 20px;
+    }
+    
+    #credit {
+        font-size: 12px;
+        color: #777;
+        margin-top: 40px;
+        font-style: italic;
+    }
+</style>
+
+    </head> <body> <div id="game-container"> <!-- Welcome Screen --> <div id="welcome-screen"> <div id="ninja-logo">🥷</div> <h1>Math Ninja</h1> <p>Test your math skills and become a calculation ninja!</p> <input type="text" id="name-input" placeholder="Enter your name" maxlength="15"> <br> <button id="start-btn" class="btn">Start Game</button>
+
+                <div id="leaderboard">
+            <h2>Top Ninjas</h2>
+            <table id="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    <!-- Leaderboard data will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <!-- Game Screen (initially hidden) -->
+    <div id="game-screen" style="display: none;">
         <div id="header">
             <div id="score-display">Score: 0</div>
             <div id="time-display">Time: 2:00</div>
         </div>
+        
+        <div id="player-name" style="font-size: 18px; margin-bottom: 10px;"></div>
         
         <div id="question-container">
             Question will appear here
@@ -94,185 +142,293 @@
         
         <input type="number" id="answer-input" placeholder="Answer">
         <br>
-        <button id="submit-btn">Submit</button>
+        <button id="submit-btn" class="btn">Submit</button>
         
         <div id="result-message"></div>
         
         <div id="progress">Question 1 of 20</div>
-        
-        <div id="game-over">
-            Time's up!<br>
-            Your final score: <span id="final-score">0</span>
-        </div>
     </div>
     
-    <audio id="correct-sound" src="https://www.soundjay.com/buttons/sounds/button-09.mp3"></audio>
-    <audio id="wrong-sound" src="https://www.soundjay.com/buttons/sounds/button-10.mp3"></audio>
+    <!-- Game Over Screen (initially hidden) -->
+    <div id="game-over">
+        Time's up!<br>
+        <span id="player-result"></span><br>
+        Your final score: <span id="final-score">0</span>
+        <br><br>
+        <button id="play-again-btn" class="btn">Play Again</button>
+    </div>
     
-    <script>
-        // Game variables
-        let score = 0;
-        let questionNumber = 1;
-        let totalQuestions = 20;
-        let timeLeft = 120; // 2 minutes in seconds
-        let timer;
-        let currentAnswer;
-        let gameActive = true;
+    <div id="credit">Made with Claude Sonnet</div>
+</div>
+
+<audio id="correct-sound" src="https://www.soundjay.com/buttons/sounds/button-09.mp3"></audio>
+<audio id="wrong-sound" src="https://www.soundjay.com/buttons/sounds/button-10.mp3"></audio>
+
+<script>
+    // Game variables
+    let playerName = "";
+    let score = 0;
+    let questionNumber = 1;
+    let totalQuestions = 20;
+    let timeLeft = 120; // 2 minutes in seconds
+    let timer;
+    let currentAnswer;
+    let gameActive = false;
+    
+    // DOM elements
+    const welcomeScreen = document.getElementById('welcome-screen');
+    const gameScreen = document.getElementById('game-screen');
+    const gameOverDisplay = document.getElementById('game-over');
+    const nameInput = document.getElementById('name-input');
+    const startBtn = document.getElementById('start-btn');
+    const playerNameDisplay = document.getElementById('player-name');
+    const questionContainer = document.getElementById('question-container');
+    const answerInput = document.getElementById('answer-input');
+    const submitBtn = document.getElementById('submit-btn');
+    const resultMessage = document.getElementById('result-message');
+    const scoreDisplay = document.getElementById('score-display');
+    const timeDisplay = document.getElementById('time-display');
+    const progressDisplay = document.getElementById('progress');
+    const playerResultDisplay = document.getElementById('player-result');
+    const finalScoreDisplay = document.getElementById('final-score');
+    const playAgainBtn = document.getElementById('play-again-btn');
+    const correctSound = document.getElementById('correct-sound');
+    const wrongSound = document.getElementById('wrong-sound');
+    const leaderboardBody = document.getElementById('leaderboard-body');
+    
+    // Generate a random number between min and max (inclusive)
+    function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    
+    // Generate a new math question
+    function generateQuestion() {
+        // Decide if addition or subtraction (50% chance each)
+        const isAddition = Math.random() < 0.5;
         
-        // DOM elements
-        const questionContainer = document.getElementById('question-container');
-        const answerInput = document.getElementById('answer-input');
-        const submitBtn = document.getElementById('submit-btn');
-        const resultMessage = document.getElementById('result-message');
-        const scoreDisplay = document.getElementById('score-display');
-        const timeDisplay = document.getElementById('time-display');
-        const progressDisplay = document.getElementById('progress');
-        const gameOverDisplay = document.getElementById('game-over');
-        const finalScoreDisplay = document.getElementById('final-score');
-        const correctSound = document.getElementById('correct-sound');
-        const wrongSound = document.getElementById('wrong-sound');
-        
-        // Generate a random number between min and max (inclusive)
-        function getRandomNumber(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
+        if (isAddition) {
+            // For addition, ensure sum doesn't exceed 100
+            const num1 = getRandomNumber(1, 99);
+            const num2 = getRandomNumber(1, Math.min(100 - num1, 99));
+            currentAnswer = num1 + num2;
+            questionContainer.textContent = `${num1} + ${num2} = ?`;
+        } else {
+            // For subtraction, ensure both numbers are 1 or 2 digits
+            // and result is positive
+            const num1 = getRandomNumber(10, 99);
+            const num2 = getRandomNumber(1, num1);
+            currentAnswer = num1 - num2;
+            questionContainer.textContent = `${num1} - ${num2} = ?`;
         }
         
-        // Generate a new math question
-        function generateQuestion() {
-            // Decide if addition or subtraction (50% chance each)
-            const isAddition = Math.random() < 0.5;
-            
-            if (isAddition) {
-                // For addition, ensure sum doesn't exceed 100
-                const num1 = getRandomNumber(1, 99);
-                const num2 = getRandomNumber(1, Math.min(100 - num1, 99));
-                currentAnswer = num1 + num2;
-                questionContainer.textContent = `${num1} + ${num2} = ?`;
-            } else {
-                // For subtraction, ensure both numbers are 1 or 2 digits
-                // and result is positive
-                const num1 = getRandomNumber(10, 99);
-                const num2 = getRandomNumber(1, num1);
-                currentAnswer = num1 - num2;
-                questionContainer.textContent = `${num1} - ${num2} = ?`;
-            }
-            
-            // Clear previous answer and focus on input
-            answerInput.value = '';
-            answerInput.focus();
+        // Clear previous answer and focus on input
+        answerInput.value = '';
+        answerInput.focus();
+    }
+    
+    // Check the user's answer
+    function checkAnswer() {
+        if (!gameActive) return;
+        
+        const userAnswer = parseInt(answerInput.value);
+        
+        if (isNaN(userAnswer)) {
+            resultMessage.textContent = "Please enter a number!";
+            return;
         }
         
-        // Check the user's answer
-        function checkAnswer() {
-            if (!gameActive) return;
-            
-            const userAnswer = parseInt(answerInput.value);
-            
-            if (isNaN(userAnswer)) {
-                resultMessage.textContent = "Please enter a number!";
-                return;
-            }
-            
-            if (userAnswer === currentAnswer) {
-                // Correct answer
-                score += 5;
-                scoreDisplay.textContent = `Score: ${score}`;
-                resultMessage.textContent = "Correct!";
-                
-                // Play sound
-                correctSound.play();
-                
-                // Change background color to green and fade to white
-                document.body.style.backgroundColor = "#8FFF8F";
-                setTimeout(() => {
-                    document.body.style.backgroundColor = "#FFFFFF";
-                }, 1000);
-                
-                // Move to next question or end game
-                questionNumber++;
-                if (questionNumber <= totalQuestions) {
-                    progressDisplay.textContent = `Question ${questionNumber} of ${totalQuestions}`;
-                    generateQuestion();
-                } else {
-                    endGame();
-                }
-            } else {
-                // Wrong answer
-                resultMessage.textContent = `Wrong! The correct answer is ${currentAnswer}.`;
-                
-                // Play sound
-                wrongSound.play();
-                
-                // Change background color to red and fade to white
-                document.body.style.backgroundColor = "#FF8F8F";
-                setTimeout(() => {
-                    document.body.style.backgroundColor = "#FFFFFF";
-                }, 1000);
-                
-                // Move to next question or end game
-                questionNumber++;
-                if (questionNumber <= totalQuestions) {
-                    progressDisplay.textContent = `Question ${questionNumber} of ${totalQuestions}`;
-                    generateQuestion();
-                } else {
-                    endGame();
-                }
-            }
-        }
-        
-        // Update the timer display
-        function updateTimer() {
-            const minutes = Math.floor(timeLeft / 60);
-            const seconds = timeLeft % 60;
-            timeDisplay.textContent = `Time: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-            
-            if (timeLeft <= 0) {
-                endGame();
-            } else {
-                timeLeft--;
-            }
-        }
-        
-        // End the game
-        function endGame() {
-            gameActive = false;
-            clearInterval(timer);
-            questionContainer.style.display = 'none';
-            answerInput.style.display = 'none';
-            submitBtn.style.display = 'none';
-            resultMessage.style.display = 'none';
-            progressDisplay.style.display = 'none';
-            gameOverDisplay.style.display = 'block';
-            finalScoreDisplay.textContent = score;
-        }
-        
-        // Initialize the game
-        function initGame() {
-            score = 0;
-            questionNumber = 1;
-            timeLeft = 120;
-            gameActive = true;
-            
+        if (userAnswer === currentAnswer) {
+            // Correct answer
+            score += 5;
             scoreDisplay.textContent = `Score: ${score}`;
-            progressDisplay.textContent = `Question ${questionNumber} of ${totalQuestions}`;
+            resultMessage.textContent = "Correct!";
             
-            // Start the timer
-            timer = setInterval(updateTimer, 1000);
+            // Play sound
+            correctSound.play();
             
-            // Generate the first question
-            generateQuestion();
+            // Change background color to green and fade to white
+            document.body.style.backgroundColor = "#8FFF8F";
+            setTimeout(() => {
+                document.body.style.backgroundColor = "#FFFFFF";
+            }, 1000);
+            
+            // Move to next question or end game
+            questionNumber++;
+            if (questionNumber <= totalQuestions) {
+                progressDisplay.textContent = `Question ${questionNumber} of ${totalQuestions}`;
+                generateQuestion();
+            } else {
+                endGame();
+            }
+        } else {
+            // Wrong answer
+            resultMessage.textContent = `Wrong! The correct answer is ${currentAnswer}.`;
+            
+            // Play sound
+            wrongSound.play();
+            
+            // Change background color to red and fade to white
+            document.body.style.backgroundColor = "#FF8F8F";
+            setTimeout(() => {
+                document.body.style.backgroundColor = "#FFFFFF";
+            }, 1000);
+            
+            // Move to next question or end game
+            questionNumber++;
+            if (questionNumber <= totalQuestions) {
+                progressDisplay.textContent = `Question ${questionNumber} of ${totalQuestions}`;
+                generateQuestion();
+            } else {
+                endGame();
+            }
+        }
+    }
+    
+    // Update the timer display
+    function updateTimer() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timeDisplay.textContent = `Time: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        
+        if (timeLeft <= 0) {
+            endGame();
+        } else {
+            timeLeft--;
+        }
+    }
+    
+    // End the game
+    function endGame() {
+        gameActive = false;
+        clearInterval(timer);
+        
+        // Hide game screen
+        gameScreen.style.display = 'none';
+        
+        // Show game over screen
+        gameOverDisplay.style.display = 'block';
+        playerResultDisplay.textContent = `Well done, ${playerName}!`;
+        finalScoreDisplay.textContent = score;
+        
+        // Save score to local storage
+        saveScore(playerName, score);
+        
+        // Update leaderboard
+        updateLeaderboard();
+    }
+    
+    // Initialize the game
+    function initGame() {
+        // Get player name
+        playerName = nameInput.value.trim();
+        
+        if (!playerName) {
+            alert("Please enter your name to start the game!");
+            return;
         }
         
-        // Event listeners
-        submitBtn.addEventListener('click', checkAnswer);
-        answerInput.addEventListener('keypress', function(event) {
-            if (event.key === 'Enter') {
-                checkAnswer();
-            }
+        // Hide welcome screen and show game screen
+        welcomeScreen.style.display = 'none';
+        gameScreen.style.display = 'block';
+        gameOverDisplay.style.display = 'none';
+        
+        // Reset game variables
+        score = 0;
+        questionNumber = 1;
+        timeLeft = 120;
+        gameActive = true;
+        
+        // Update displays
+        playerNameDisplay.textContent = `Ninja: ${playerName}`;
+        scoreDisplay.textContent = `Score: ${score}`;
+        progressDisplay.textContent = `Question ${questionNumber} of ${totalQuestions}`;
+        resultMessage.textContent = '';
+        
+        // Start the timer
+        timer = setInterval(updateTimer, 1000);
+        
+        // Generate the first question
+        generateQuestion();
+    }
+    
+    // Save score to local storage
+    function saveScore(name, score) {
+        // Get existing scores or initialize empty array
+        const scores = JSON.parse(localStorage.getItem('mathNinjaScores')) || [];
+        
+        // Add new score
+        scores.push({
+            name: name,
+            score: score,
+            date: new Date().toLocaleDateString()
         });
         
-        // Start the game when page loads
-        window.onload = initGame;
-    </script>
-</body>
-</html>
+        // Sort scores by highest first
+        scores.sort((a, b) => b.score - a.score);
+        
+        // Keep only top 10 scores
+        const topScores = scores.slice(0, 10);
+        
+        // Save back to local storage
+        localStorage.setItem('mathNinjaScores', JSON.stringify(topScores));
+    }
+    
+    // Update leaderboard display
+    function updateLeaderboard() {
+        const scores = JSON.parse(localStorage.getItem('mathNinjaScores')) || [];
+        
+        // Clear existing rows
+        leaderboardBody.innerHTML = '';
+        
+        // Add score rows
+        scores.forEach((score, index) => {
+            const row = document.createElement('tr');
+            
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${score.name}</td>
+                <td>${score.score}</td>
+                <td>${score.date}</td>
+            `;
+            
+            leaderboardBody.appendChild(row);
+        });
+        
+        // Add empty rows if less than 10 scores
+        for (let i = scores.length; i < 10; i++) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${i + 1}</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            `;
+            leaderboardBody.appendChild(row);
+        }
+    }
+    
+    // Event listeners
+    startBtn.addEventListener('click', initGame);
+    
+    submitBtn.addEventListener('click', checkAnswer);
+    
+    answerInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            checkAnswer();
+        }
+    });
+    
+    playAgainBtn.addEventListener('click', function() {
+        // Show welcome screen again
+        gameOverDisplay.style.display = 'none';
+        welcomeScreen.style.display = 'block';
+        
+        // Clear name input for new player
+        nameInput.value = '';
+        nameInput.focus();
+    });
+    
+    // Initialize leaderboard when page loads
+    window.onload = updateLeaderboard;
+</script>
+</body> </html>
