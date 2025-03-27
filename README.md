@@ -1,2 +1,2 @@
-# Math Ninja
-This script is generated with help of AI 
+# eSchool
+This scripts are generated with help of AI 
