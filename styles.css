@@ -1,1 +1,18 @@
 
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+.game-container {
+    min-height: 400px;
+}
+
+.correct-bg {
+    background-color: #4ade80;
+    transition: background-color 0.5s;
+}
+
+.incorrect-bg {
+    background-color: #f87171;
+    transition: background-color 0.5s;
+}
