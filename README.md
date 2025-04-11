@@ -1,3 +1,3 @@
 This scripts are generated with help of AI
 
-Play [Math Ninja](https://musa-pro.github.io/eschool/math-ninja/)
+Play [Brain Boost](https://musa-pro.github.io/brainboost)
