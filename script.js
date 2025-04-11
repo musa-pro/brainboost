@@ -25,12 +25,12 @@ window.gameApp = function () {
         
         // Rewards
         rewards: [
-            { id: 1, name: '15 minutes Screen Time', cost: 50 },
-            { id: 2, name: 'Ice Cream Treat', cost: 100 },
-            { id: 3, name: 'Small Lego Set', cost: 200 },
-            { id: 4, name: 'Board Game', cost: 300 },
-            { id: 5, name: 'Art Supplies', cost: 150 },
-            { id: 6, name: 'Movie Night', cost: 250 }
+            { id: 1, name: '15 minutes Screen Time', cost: 5000 },
+            { id: 2, name: 'Ice Cream Treat', cost: 10000 },
+            { id: 3, name: 'Small Lego Set', cost: 20000 },
+            { id: 4, name: 'Board Game', cost: 30000 },
+            { id: 5, name: 'Art Supplies', cost: 15000 },
+            { id: 6, name: 'Movie Night', cost: 25000 }
         ],
         showRewardConfirmation: false,
         selectedReward: null,
@@ -117,7 +117,7 @@ window.gameApp = function () {
             this.currentScore = 0;
             this.timeRemaining = 120; // 2 minutes
             this.feedbackClass = '';
-            this.gameOver = false;
+            this.gameOver = true;
             
             // Set up game-specific variables
             switch (game.type) {
