@@ -276,7 +276,7 @@ window.gameApp = function () {
             
             if (number === this.currentProblem.answer) {
                 this.showFeedback(true);
-                this.currentScore += 10;
+                this.currentScore += 3;
                 setTimeout(() => this.generateMathBingoProblem(), 1000);
             } else {
                 this.showFeedback(false);
@@ -300,7 +300,7 @@ window.gameApp = function () {
             
             if (userAnswerNum === this.currentProblem.answer) {
                 this.showFeedback(true);
-                this.currentScore += 10;
+                this.currentScore += 2;
                 this.generateMathProblem();
             } else {
                 this.showFeedback(false);
@@ -364,7 +364,7 @@ window.gameApp = function () {
         checkWordAnswer() {
             if (this.userAnswer.toLowerCase() === this.currentProblem.word.toLowerCase()) {
                 this.showFeedback(true);
-                this.currentScore += 10;
+                this.currentScore += 3;
                 this.generateWordScramble();
             } else {
                 this.showFeedback(false);
@@ -436,7 +436,7 @@ window.gameApp = function () {
                 
                 // Check if word is complete
                 if (!this.displayedWord.includes('_')) {
-                    this.currentScore += 20;
+                    this.currentScore += 1;
                     setTimeout(() => this.generateHangmanWord(), 1000);
                 }
             } else {
@@ -515,7 +515,7 @@ window.gameApp = function () {
         checkIQAnswer(answer) {
             if (answer === this.currentProblem.answer) {
                 this.showFeedback(true);
-                this.currentScore += 15;
+                this.currentScore += 3;
                 this.generateIQQuestion();
             } else {
                 this.showFeedback(false);
