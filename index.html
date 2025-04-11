@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Educational Games Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+
+        <!-- Load Alpine.js after your script -->
+    <script src="script.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
 </head>
 <body class="bg-blue-50">
     <div x-data="gameApp()" class="container mx-auto px-4 py-8 max-w-4xl">
@@ -312,6 +316,6 @@
     <audio id="correctSound" src="https://assets.mixkit.co/active_storage/sfx/2010/2010-preview.mp3" preload="auto"></audio>
     <audio id="wrongSound" src="https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3" preload="auto"></audio>
 
-    <script src="script.js" defer></script>
+
 </body>
 </html>
