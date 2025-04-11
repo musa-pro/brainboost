@@ -1,4 +1,4 @@
-function gameApp() {
+window.gameApp = function () {
     return {
         // User management
         currentUser: null,
