@@ -706,12 +706,12 @@ window.gameApp = function () {
         
         // Rewards
         rewards: [
-            { id: 1, name: '15 minutes Screen Time', cost: 1500 },
-            { id: 2, name: 'Ice Cream Treat', cost: 1000 },
-            { id: 3, name: 'Small Lego Set', cost: 5000 },
-            { id: 4, name: 'Board Game', cost: 7500 },
-            { id: 5, name: 'Art Supplies', cost: 110000 },
-            { id: 6, name: 'Movie Night', cost: 100000 }
+            { id: 1, name: '15 minutes Screen Time', cost: 500 },
+            { id: 2, name: 'Ice Cream Treat', cost: 700 },
+            { id: 3, name: 'Small Lego Set', cost: 1000 },
+            { id: 4, name: 'Board Game', cost: 1000 },
+            { id: 5, name: 'Art Supplies', cost: 1200 },
+            { id: 6, name: 'Movie Night', cost: 3000 }
         ],
         showRewardConfirmation: false,
         selectedReward: null,
