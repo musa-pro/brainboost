@@ -1130,9 +1130,7 @@ window.gameApp = function () {
         
         generateIQQuestion() {
             const grade = this.currentUser.grade;
-            let questions;
-
-            const questions = [
+            let questions = [
     {
         question: "What comes next in the pattern: 2, 4, 6, 8, ?",
         options: ["9", "10", "12", "14"],
