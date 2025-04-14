@@ -22,7 +22,7 @@ window.gameApp = function () {
         bingoNumbers: [],
         selectedBingoNumbers: [],
         guessedLetters: [],
-        guessesLeft: 3,
+        guessesLeft: 2,
         displayedWord: '',
         
         // Rewards
@@ -373,7 +373,8 @@ window.gameApp = function () {
         // Hangman Game
         setupHangman() {
             this.guessedLetters = [];
-            this.guessesLeft = 6;
+           // this.guessesLeft = 6;
+             this.guessesLeft = 4;
             this.generateHangmanWord();
         },
         
