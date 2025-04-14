@@ -719,11 +719,11 @@ window.gameApp = function () {
         
         // Available games
         games: [
-            { id: 1, name: 'Math Bingo', category: 'Math', type: 'mathBingo', minGrade: 'K', maxGrade: '5' },
-            { id: 2, name: 'Math Challenge', category: 'Math', type: 'mathProblem', minGrade: '1', maxGrade: '5' },
-            { id: 3, name: 'Word Scramble', category: 'Language', type: 'wordScramble', minGrade: '1', maxGrade: '5' },
-            { id: 4, name: 'Hangman', category: 'Language', type: 'hangman', minGrade: 'K', maxGrade: '5' },
-            { id: 5, name: 'IQ Challenge', category: 'IQ Test', type: 'iqTest', minGrade: '2', maxGrade: '5' }
+            { id: 1, name: 'Math Bingo', category: 'Math', type: 'mathBingo', minGrade: 'K', maxGrade: '8' },
+            { id: 2, name: 'Math Challenge', category: 'Math', type: 'mathProblem', minGrade: '1', maxGrade: '8' },
+            { id: 3, name: 'Word Scramble', category: 'Language', type: 'wordScramble', minGrade: '1', maxGrade: '8' },
+            { id: 4, name: 'Hangman', category: 'Language', type: 'hangman', minGrade: 'K', maxGrade: '8' },
+            { id: 5, name: 'IQ Challenge', category: 'IQ Test', type: 'iqTest', minGrade: '2', maxGrade: '8' }
         ],
         
         init() {
